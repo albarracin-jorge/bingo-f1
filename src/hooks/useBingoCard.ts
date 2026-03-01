@@ -8,6 +8,7 @@ function defaultGrid(): BingoGrid {
   return Array.from({ length: CELL_COUNT }, (_, i) => ({
     id: i,
     text: '',
+    image: '',
     marked: false,
   }))
 }
@@ -18,6 +19,7 @@ function initState(): { cells: BingoGrid; isSharedPreview: boolean } {
     const cells: BingoGrid = shared.texts.map((text, i) => ({
       id: i,
       text,
+      image: shared.images?.[i] ?? '',
       marked: shared.marked[i],
     }))
     return { cells, isSharedPreview: true }
@@ -61,9 +63,21 @@ export function useBingoCard() {
     )
   }
 
+  function updateCellImage(id: number, image: string) {
+    setLocalCells(prev =>
+      prev.map(c => (c.id === id ? { ...c, image } : c))
+    )
+  }
+
+  function deleteCellImage(id: number) {
+    setLocalCells(prev =>
+      prev.map(c => (c.id === id ? { ...c, image: '' } : c))
+    )
+  }
+
   function deleteCell(id: number) {
     setLocalCells(prev =>
-      prev.map(c => (c.id === id ? { ...c, text: '', marked: false } : c))
+      prev.map(c => (c.id === id ? { ...c, text: '', image: '', marked: false } : c))
     )
   }
 
@@ -85,6 +99,8 @@ export function useBingoCard() {
     isSharedPreview,
     toggleMode,
     updateCellText,
+    updateCellImage,
+    deleteCellImage,
     deleteCell,
     toggleCellMarked,
     shareCard,

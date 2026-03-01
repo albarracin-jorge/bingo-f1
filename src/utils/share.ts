@@ -3,6 +3,7 @@ import type { BingoGrid, SharePayload } from '../types'
 export function encodeCardToHash(cells: BingoGrid): void {
   const payload: SharePayload = {
     texts: cells.map(c => c.text),
+    images: cells.map(c => c.image),
     marked: cells.map(c => c.marked),
   }
   const encoded = btoa(encodeURIComponent(JSON.stringify(payload)))

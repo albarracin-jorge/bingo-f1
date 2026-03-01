@@ -12,6 +12,8 @@ function App() {
     isSharedPreview,
     toggleMode,
     updateCellText,
+    updateCellImage,
+    deleteCellImage,
     deleteCell,
     toggleCellMarked,
     shareCard,
@@ -32,6 +34,8 @@ function App() {
         winningCells={winningCells}
         isSharedPreview={isSharedPreview}
         onTextChange={updateCellText}
+        onImageChange={updateCellImage}
+        onImageDelete={deleteCellImage}
         onDelete={deleteCell}
         onToggleMark={toggleCellMarked}
       />
