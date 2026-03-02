@@ -122,8 +122,8 @@ a:hover {
 
 .bingo-grid {
   display: grid;
-  grid-template-columns: repeat(5, var(--grid-cell-size));
-  grid-template-rows: repeat(5, var(--grid-cell-size));
+  grid-template-columns: repeat(4, var(--grid-cell-size));
+  grid-template-rows: repeat(4, var(--grid-cell-size));
   gap: 4px;
 }
 
