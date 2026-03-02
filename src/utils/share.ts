@@ -1,4 +1,5 @@
 import type { BingoGrid, SharePayload } from '../types'
+import { CELL_COUNT } from '../constants'
 
 export function encodeCardToHash(cells: BingoGrid): void {
   const payload: SharePayload = {
@@ -20,8 +21,8 @@ export function decodeHashToCard(hash: string): SharePayload | null {
     if (
       Array.isArray(payload.texts) &&
       Array.isArray(payload.marked) &&
-      payload.texts.length === 25 &&
-      payload.marked.length === 25
+      payload.texts.length === CELL_COUNT &&
+      payload.marked.length === CELL_COUNT
     ) {
       return payload
     }
