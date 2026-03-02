@@ -17,6 +17,8 @@ function App() {
     deleteCell,
     toggleCellMarked,
     shareCard,
+    exportCard,
+    importCard,
   } = useBingoCard()
 
   return (
@@ -26,6 +28,8 @@ function App() {
         isSharedPreview={isSharedPreview}
         onToggleMode={toggleMode}
         onShare={shareCard}
+        onExport={exportCard}
+        onImport={importCard}
       />
       {isSharedPreview && <ShareBanner />}
       <BingoGrid

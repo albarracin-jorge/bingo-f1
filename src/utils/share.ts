@@ -7,8 +7,8 @@ export function encodeCardToHash(cells: BingoGrid): void {
     marked: cells.map(c => c.marked),
   }
   const encoded = btoa(encodeURIComponent(JSON.stringify(payload)))
-  window.location.hash = `share=${encoded}`
-  navigator.clipboard.writeText(window.location.href)
+  const url = `${window.location.origin}${window.location.pathname}#share=${encoded}`
+  navigator.clipboard.writeText(url)
 }
 
 export function decodeHashToCard(hash: string): SharePayload | null {

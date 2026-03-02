@@ -1,5 +1,5 @@
 :root {
-  --color-bg: #0a0a0a;
+  --color-bg: rgb(48 48 55);
   --color-surface: #1a1a1a;
   --color-red: #E8002D;
   --color-red-dim: rgba(232, 0, 45, 0.15);
@@ -67,6 +67,18 @@ a:hover {
   color: var(--color-red);
 }
 
+.header__logo {
+  height: 0.85em;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 0.15em;
+  filter: brightness(0) invert(1);
+}
+
+.header__file-input {
+  display: none;
+}
+
 .header__actions {
   display: flex;
   gap: 0.75rem;
@@ -74,6 +86,7 @@ a:hover {
 }
 
 .btn {
+  display: inline-block;
   font-family: var(--font-heading);
   font-size: 1.1rem;
   letter-spacing: 0.06em;

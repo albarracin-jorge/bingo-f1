@@ -92,6 +92,26 @@ export function useBingoCard() {
     encodeCardToHash(localCells)
   }
 
+  function exportCard() {
+    const json = JSON.stringify(localCells, null, 2)
+    const blob = new Blob([json], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'bingo-f1-card.json'
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
+  function importCard(cells: BingoGrid) {
+    const normalized = cells.map(c => ({ ...c, image: c.image ?? '' }))
+    setLocalCells(normalized)
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(normalized))
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname)
+    }
+  }
+
   return {
     cells: localCells,
     mode,
@@ -104,5 +124,7 @@ export function useBingoCard() {
     deleteCell,
     toggleCellMarked,
     shareCard,
+    exportCard,
+    importCard,
   }
 }
